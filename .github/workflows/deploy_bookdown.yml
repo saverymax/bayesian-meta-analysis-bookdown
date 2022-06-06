@@ -19,6 +19,8 @@ jobs:
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown", "cmdstanr", "tidyr", "dplyr", "bayesplot", "ggplot2", "extraDistr", "kableExtra"))'
       - name: Install cmdstanr
         run: Rscript -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))'
+      - name: set stan path
+        run: Rscript -e 'cmdstanr::set_cmdstan_path(cmdstanr::cmdstan_path())'
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
       - uses: actions/upload-artifact@v1
