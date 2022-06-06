@@ -12,6 +12,12 @@ jobs:
     name: Render-Book
     runs-on: macOS-latest
     steps:
+      - name: cmdstan env vars
+        run: |
+          echo "CMDSTAN_PATH=${HOME}/.cmdstanr" >> $GITHUB_ENV
+          echo "CMDSTAN_VERSION=2.26.1" >> $GITHUB_ENV
+        shell: bash
+    
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@v1
       - uses: r-lib/actions/setup-pandoc@v1
@@ -19,8 +25,21 @@ jobs:
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown", "cmdstanr", "tidyr", "dplyr", "bayesplot", "ggplot2", "extraDistr", "kableExtra"))'
       - name: Install cmdstanr
         run: Rscript -e 'install.packages("cmdstanr", repos = c("https://mc-stan.org/r-packages/", getOption("repos")))'
+        
+      - name: Cache cmdstan
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.CMDSTAN_PATH }}
+          key: ${{ runner.os }}-cmdstan-${{ env.CMDSTAN_VERSION }}
+          restore-keys: ${{ runner.os }}-cmdstan-
+          
       - name: Install cmdstan
-        run: Rscript -e 'cmdstanr::install_cmdstan(cores = 2)'
+        run: |
+          version <- Sys.getenv("CMDSTAN_VERSION")
+          url <- sprintf("https://github.com/stan-dev/cmdstan/releases/download/v%s/cmdstan-%s.tar.gz", version, version)
+          cmdstanr::install_cmdstan(cores = 2, release_url = url)
+        shell: Rscript {0}
+        
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
       - uses: actions/upload-artifact@v1
