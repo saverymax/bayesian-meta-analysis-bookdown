@@ -1,0 +1,7 @@
+_book/
+_bookdown_files/
+**/*.html
+.Rhistory
+*.Rproj*
+*.exe
+.Rproj.user

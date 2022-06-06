@@ -1,0 +1,7 @@
+\section{Introduction}
+
+This report reviews Bayesian methods for estimating random effect models for meta-analysis, with a particular focus on the effect of prior information. Then, using summary data from studies conducted to measure the effect of ivermectin as a treatment for COVID-19, we demonstrate the use of Bayesian methods for meta-analysis, experimenting with the effect of different priors on the between-study variance.
+
+The summary data for ivermectin is provided in a blog post by the statistician Andrew Gelman \parencite{Gelman-blog}. In the post, Gelman reconstructs a meta-analysis on the effect of ivermectin. He demonstrates how the selection of the prior for the between-study variance can influence conclusions of the meta-analysis, in this case the extent to which ivermectin has a positive effect on treating COVID-19. We take his discussion of this topic as a starting point for this report. Given that there was a large amount of misinformation regarding ivermectin and various pseudo-scientific studies regarding this topic \parencite{Reardon-2021}, it is quite an interesting case study of the role that Bayesian modelling can play in meta-analyses.
+
+All R code and Markdown files used to conduct the analysis presented in this report can be found at \url{https://github.com/saverymax/bayesian-meta-analysis}.

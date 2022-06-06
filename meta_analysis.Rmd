@@ -1,0 +1,113 @@
+# Bayesian meta-analysis on ivermectin
+
+Having discussed Bayesian methods for estimating random effects models in meta-analyses, with a particular focus on the use of weakly informative priors, we are now prepared to conduct a Bayesian meta-analysis of our own. The data this meta-analysis we use was reconstructed by \textcite{Gelman-blog} in a blog post\footnote{The data was taken by Gelman from another blog by \textcite{Marino-blog}. In fact, the online ivermectin debate is something of a very long blog chain echoing between various social media platforms.}. This post discusses the effect of the anti-parasitic medication ivermectin. It should be noted that there is little evidence that ivermectin is an effective treatment for COVID-19, and studies around this area have been rife with pseudoscience and suspiscious data. The purpose of the blog post was to further discuss how one might draw false positive results in a meta-analysis, with a bayesian treatment of studies related to ivermectin, and so we extend that here.
+
+This data used in this analysis is on the log scale (log of the odds ratio), so that we can exponentiate the cofficients from our Bayesian model to get the relative risk (RR). The RR is the multiplicative factor by which the mean of individuals in group $x_i$ is equal to $\exp(B_i)$ times the mean of individuals in the reference group, keeping all other covariates
+equal. For a RR of 50\%, we say that the treatment resulted in a 50\% improvement relative to the control. In the case of the results presented here, we say that patients treated with ivermectin had a $p$\% improvement, depending on the outcome measured in the studies.
+
+We first fit a random-effects model on the data using Stan, and then conduct a sensitivity analysis. The Stan models, including their priors, can be found in Section \ref{sec:stan} of the appendix. 
+
+
+## Sensitivity analysis
+
+Having introduced the topic of our meta-analysis and the means by which we will conduct it, we now proceed to discuss the extent to which the posterior estimates and intervals change when the priors on the between-study variance are altered. In Bayesian data analysis, this is known as a prior sensitivity analysis. The intent of our sensitivity analysis is to determine the effect that altering the weak prior has on our posterior estimates and conclusions of the meta-analysis. As described above, we use the inverse-gamma\footnote{The inverse-gamma on $\tau$ that we use here is not strictly weakly informative, in that it is a recommendation following \textcite{Gronau-2017}, but we consider it weakly informative for the sake of our sensitivity analysis. We could specify the non-informative IG prior on $\tau^2$ but the density must be transformed to get $\tau$.}, the half-t distribution, and the half-cauchy, roughly following the work \cite{Williams-2018}. For reference, we also include a uniform prior, though this is not recommended due to the improper posteriors that can result from its use \parencite{Gelman-2006}.
+
+We use the following priors with the hyperparameters shown in Equation \ref{eq:priors}, following \cite{Williams-2018}. The prior densities are shown in Figure \ref{fig:prior-den}. We also include a uniform prior of U$(0,10)$ to demonstrate the effect of an unrealistic prior. It is unreasonable to assume that the between-study variance is distributed uniformly from 0 all the way to 10, 10 being quite large in this context.
+
+\begin{equation}
+\label{eq:priors}
+\begin{gathered}
+\tau \sim \text{U}(0, 10) \\
+\tau \sim \text{Inverse-gamma}(1,0.15)\\
+\tau \sim \text{Half-t}(0, 0.5) \\
+\tau \sim \text{Half-cauchy}(0, 0.5)
+\end{gathered}
+\end{equation}
+
+```{r prior-den, echo=FALSE, fig.show="hold", fig.cap="Prior densities used in sensitivity analysis", out.width = "70%", fig.align="center"}
+plot_priors()
+```
+
+```{r modeling, results='hide', echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE}
+uniform_post <- run_model(flat_path, flat_string, "uniform")
+ig_post <- run_model(ig_path, ig_string, "inverse-gamma")
+hc_post <- run_model(hc_path, hc_string, "half-cauchy")
+ht_post <- run_model(ht_path, ht_string, "half-t")
+```
+
+
+The posterior estimates on the log of the odds scale can be found in Section \ref{sec:post} of the appendix. For brevity, we do not discuss them here. However, Figure \ref{fig:post-dens} does show the posterior density plots of these parameters. Posterior plots were generated with the R package bayesplot \parencite{Gabry-2019}. Important to note is that the parameters estimated with the uniform prior have the largest tails, whereas those from the model using the half-t have smaller tails. This is to be expected. The half-t imposes more constraints than the uniform or the half-cauchy. Despite the theoretical recommendations against the inverse-gamma, in this case the corresponding posteriors are relatively similar to those of the half-t or half-cauchy.
+
+```{r post-dens, echo=FALSE, fig.show='hold', fig.cap="Posterior densities of parameters estimated from random effects model, log-odds scale", fig.subcap=c("","", "", ""), out.width="50%", fig.ncol=2}
+plot_posteriors("uniform", uniform_post)
+plot_posteriors("inverse-gamma", ig_post)
+plot_posteriors("half-cauchy", hc_post)
+plot_posteriors("half-t", ht_post)
+```
+
+
+Notice the $\theta_{\text{new}}$ parameter in Figure \ref{fig:post-dens}. This is a simulated estimate of the effect of ivermectin for some hypothetical future study, where the effect is drawn from $N(\mu,\tau)$ and the specific values of $\mu$ and $\tau$ are sampled from their respective posteriors. This takes into account the uncertainty associated with the parameters and the sampling uncertainty of conducting a new study. It means that, given all the uncertainty associated with different types of studies included in the meta-analysis, if we were to conduct a new study on the effect of ivermectin as a treatment for COVID-19, the distribution of $\theta_{\text{new}}$ will approximate the future effects that could be found in new studies.
+
+```{r tau-post-dens, echo=FALSE, fig.show='hold', fig.cap="Posterior densities of tau", fig.subcap=c("","", "", ""), out.width="50%", fig.ncol=2}
+plot_tau_posterior("uniform", uniform_post)
+plot_tau_posterior("inverse-gamma", ig_post)
+plot_tau_posterior("half-cauchy", hc_post)
+plot_tau_posterior("half-t", ht_post)
+```
+
+We can then proceed to discuss the changes in the RR ratio. Table \ref{tab:rr} shows the RR estimates of $\mu$ and - $\theta_{\text{new}}$ for all different priors. We can see that the mean estimates themselves do not change in large amounts, which makes sense given that the only difference between the models presented here is the prior on the between-study variance. So while we don't expect the point estimates to change, the credible intervals for these point estimates will. For example, we can see that the interval for $\mu$ goes from $(0.2703,  0.9669)$ when using the uniform prior on $\tau$ to $(0.3192, 0.8303)$ and $(0.3342, 0.7796)$ for the half-cauchy and half-t priors, respectively. Even more interesting, the interval for $\theta_{\text{new}}$ goes from $(0.1872, 1.3982)$ when using the half-cauchy prior to $(0.2755, 0.9794)$ when using the half-t. This is indicative of the extent to which our meta-analysis conclusions can change based on the prior; in the half-cauchy case we would say that a future effect could result in a positive or negative change in outcome for ivermectin treatment, but when using the half-t we would conclude that ivermectin has either a negligible effect to a large positive effect. But in either case, the intervals are very wide. 
+
+It is also important to mention that while the average RR of $\mu$ is less than 1 in all models, $\theta_{\text{new}}$ takes quite a larger range, including values larger than 1 in the 90\% credible interval. In general, from this set of studies included in the meta-analysis, such a result makes it difficult to draw conclusions about ivermectin one way or the other. It may be that these studies are too heterogeneous to find conclusive evidence. This will be discussed further in the conclusion.
+
+\begin{table}[H]
+\caption{\label{tab:rr}Relative Risk posterior estimates, with different priors on $\tau$}
+\centering
+\begin{tabular}[t]{llccc}
+\toprule
+&& Mean & 5\% & 95\%\\
+\midrule
+\multirow{2}{*}{Uniform}
+&$\mu$ & 0.5099 & 0.2703 & 0.9669\\
+&$\theta_{\text{new}}$ & 0.5040 & 0.0977 & 2.6799\\
+\multirow{2}{*}{IG}
+&$\mu$ & 0.5118 & 0.3123 & 0.8284\\
+&$\theta_{\text{new}}$ & 0.5144 & 0.1998 & 1.3313\\
+\multirow{2}{*}{Half-cauchy}
+&$\mu$ & 0.5118 & 0.3192 & 0.8303\\
+&$\theta_{\text{new}}$ & 0.5181 & 0.1872 & 1.3982\\
+\multirow{2}{*}{Half-t}
+&$\mu$ & 0.5173 & 0.3342 & 0.7796\\
+&$\theta_{\text{new}}$ & 0.5188 & 0.2755 & 0.9794\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Figure \ref{fig:intervals} shows the credible intervals for the study-specific effects $\theta_i$, $\mu$, and $\theta_{\text{new}}$. This nicely illustrates the effect of our prior sensitivity analysis: The intervals for the uniform prior are really large compared to all other priors. While the intervals of the study-specific effects when using the inverse gamma and half-cauchy priors often include 1, the more informative half-t limits the spread of these intervals. Therefore, the conclusions of the meta-analysis need to be qualified based on this sensitivity analysis. At this point, it becomes less a statistical question and more one for the biomedical domain. Which of these studies has methodological errors, or are there other factors causing the observed effects to vary considerably and be quite sensitive to choice of prior? This question was discussed considerably in the medical literature and in social media; thus it is here we choose to conclude our prior sensitivity analysis.
+
+```{r intervals, echo=FALSE, fig.show='hold', fig.cap="Equal tail credible intervals, for RR of posterior estimates", fig.subcap=c("","", "", ""), out.width="50%", fig.ncol=2}
+plot_post_intervals("uniform", uniform_post)
+plot_post_intervals("ig", ig_post)
+plot_post_intervals("hc", hc_post)
+plot_post_intervals("ht", ht_post)
+```
+
+
+Each table shows the posterior point estimates, under the log-scale and in 
+terms of the relative risk.
+
+```{r posteriors, results='asis', echo=FALSE, message=FALSE, warning=FALSE}
+print_estimates("uniform", uniform_post)
+print_estimates("inverse-gamma", ig_post)
+print_estimates("half-t", ht_post)
+print_estimates("half-cauchy", hc_post)
+```
+
+
+Here we show the posteriors for tau as generated under the different priors.
+
+```{r convergence, echo=FALSE, fig.show='hold', fig.cap="Posterior densities of tau", fig.subcap=c("","", "", ""), out.width="50%", fig.ncol=2}
+plot_convergence("uniform", uniform_post)
+plot_convergence("inverse-gamma", ig_post)
+plot_convergence("half-cauchy", hc_post)
+plot_convergence("half-t", ht_post)
+```

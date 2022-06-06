@@ -1,0 +1,40 @@
+---
+title: "Bayesian meta-analysis of ivermectin as a treatment for COVID-19"
+author: "Max Savery"
+site: bookdown::bookdown_site
+documentclass: article
+output: bookdown::gitbook
+geometry: margin=1in
+bibliography: [bib.bib, packages.bib]
+biblio-style: apa
+link-citations: yes
+github-repo: saverymax/bayesian-meta-analysis-bookdown
+description: "Bookdown for Bayesian meta-analysis"
+---
+# Technical preface
+
+This is the bookdown \parencite{R-bookdown} report for my meta-analysis of ivermectin 
+as a treatment for COVID-19. This was originally intended as my course project
+for the meta-analysis course from KU Leuven. The report is hosted at <https://saverymax.github.io/bayesian-meta-analysis-bookdown/>
+
+To locally render the book, run 
+```
+install.packages("bookdown")
+bookdown::render_book('index.Rmd', 'bookdown::pdf_book')
+```
+```{r libs, include=FALSE}
+library("cmdstanr")
+library("bayesplot")
+library("ggplot2")
+library("extraDistr")
+library("dplyr")
+library("tidyr")
+library("kableExtra")
+```
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(.packages(), 'bookdown', 'knitr', 'rmarkdown'), 'packages.bib')
+```
+```{r env, include=FALSE}
+source("code/meta_analysis_stan_functions.R", local = knitr::knit_global())
+```

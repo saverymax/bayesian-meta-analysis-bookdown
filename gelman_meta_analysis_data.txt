@@ -1,0 +1,12 @@
+study       est  se
+Ahmed       -1.897 1.505
+Bukhari     -1.715 0.489
+Buonfrate    1.955 1.505
+Chaccour    -3.219 1.681
+Krolewiecki  0.924 1.634
+Lopez       -1.109 1.668
+Mahmud      -1.966 1.551
+Mohan       -0.968 0.795
+Ravikirti   -2.207 1.523
+Together    -0.198 0.321
+Vallejos     0.285 0.760
