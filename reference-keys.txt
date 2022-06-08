@@ -1,3 +1,5 @@
+eq:bayes
+eq:half-t
 fig:prior-den
 fig:post-dens
 fig:tau-post-dens

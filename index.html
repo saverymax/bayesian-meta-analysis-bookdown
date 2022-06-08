@@ -82,7 +82,7 @@
 <li class="chapter" data-level="3.1" data-path="bayesian-meta-analysis-on-ivermectin.html"><a href="bayesian-meta-analysis-on-ivermectin.html#sensitivity-analysis"><i class="fa fa-check"></i><b>3.1</b> Sensitivity analysis</a></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="https://github.com/saverymax/sem-political-trust" target="blank">Published with bookdown</a></li>
+<li><a href="https://github.com/saverymax/bayesian-meta-analysis-bookdown" target="blank">Published with bookdown</a></li>
 
 </ul>
 
@@ -107,18 +107,30 @@
 </div>
 <div id="technical-preface" class="section level1 hasAnchor">
 <h1><span class="header-section-number">1</span> Technical preface<a href="index.html#technical-preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This is the bookdown  report for my meta-analysis of ivermectin
+<p>This is the bookdown <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2022</a>)</span> report for my meta-analysis of ivermectin
 as a treatment for COVID-19. This was originally intended as my course project
-for the meta-analysis course from KU Leuven. The report is hosted at <a href="https://saverymax.github.io/bayesian-meta-analysis-bookdown/" class="uri">https://saverymax.github.io/bayesian-meta-analysis-bookdown/</a></p>
+for the meta-analysis course from KU Leuven. The code for the report is hosted at <a href="https://github.com/saverymax/bayesian-meta-analysis-bookdown" class="uri">https://github.com/saverymax/bayesian-meta-analysis-bookdown</a>.</p>
 <p>To locally render the book, run</p>
 <pre><code>install.packages(&quot;bookdown&quot;)
 bookdown::render_book(&#39;index.Rmd&#39;, &#39;bookdown::pdf_book&#39;)</code></pre>
 
 
 <p>This report reviews Bayesian methods for estimating random effect models for meta-analysis, with a particular focus on the effect of prior information. Then, using summary data from studies conducted to measure the effect of ivermectin as a treatment for COVID-19, we demonstrate the use of Bayesian methods for meta-analysis, experimenting with the effect of different priors on the between-study variance.</p>
-<p>The summary data for ivermectin is provided in a blog post by the statistician Andrew Gelman . In the post, Gelman reconstructs a meta-analysis on the effect of ivermectin. He demonstrates how the selection of the prior for the between-study variance can influence conclusions of the meta-analysis, in this case the extent to which ivermectin has a positive effect on treating COVID-19. We take his discussion of this topic as a starting point for this report. Given that there was a large amount of misinformation regarding ivermectin and various pseudo-scientific studies regarding this topic , it is quite an interesting case study of the role that Bayesian modelling can play in meta-analyses.</p>
-<p>All R code and Markdown files used to conduct the analysis presented in this report can be found at .</p>
+<p>The summary data for ivermectin is provided in a blog post by the statistician Andrew Gelman <span class="citation">(Gelman <a href="#ref-Gelman-blog" role="doc-biblioref">2022</a>)</span>. In the post, Gelman reconstructs a meta-analysis on the effect of ivermectin. He demonstrates how the selection of the prior for the between-study variance can influence conclusions of the meta-analysis, in this case the extent to which ivermectin has a positive effect on treating COVID-19. We take his discussion of this topic as a starting point for this report. Given that there was a large amount of misinformation regarding ivermectin and various pseudo-scientific studies regarding this topic <span class="citation">(Reardon <a href="#ref-Reardon-2021" role="doc-biblioref">2021</a>)</span>, it is quite an interesting case study of the role that Bayesian modelling can play in meta-analyses.</p>
+<p>All R code and Markdown files used to conduct the analysis presented in this report can be found at <a href="https://github.com/saverymax/bayesian-meta-analysis" class="uri">https://github.com/saverymax/bayesian-meta-analysis</a>.</p>
 
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Gelman-blog">
+<p>Gelman, Andrew. 2022. “Exploring Some Questions About Meta-Analysis (Using Ivermectin as an Example), with R and Stan Code.” <a href="https://statmodeling.stat.columbia.edu/2022/02/28/answering-some-questions-about-meta-analysis-using-ivermectin-as-an-example/">https://statmodeling.stat.columbia.edu/2022/02/28/answering-some-questions-about-meta-analysis-using-ivermectin-as-an-example/</a>.</p>
+</div>
+<div id="ref-Reardon-2021">
+<p>Reardon, Sara. 2021. “Flawed Ivermectin Preprint Highlights Challenges of Covid Drug Studies.” <em>Nature</em> 596 (7871): 173–74. <a href="https://doi.org/10.1038/d41586-021-02081-w">https://doi.org/10.1038/d41586-021-02081-w</a>.</p>
+</div>
+<div id="ref-R-bookdown">
+<p>Xie, Yihui. 2022. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
+</div>
 </div>
             </section>
 
