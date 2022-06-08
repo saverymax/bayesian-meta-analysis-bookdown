@@ -35,11 +35,10 @@ p(\theta, \mu, \tau^2|y) \propto p(y|\theta, \mu, \tau^2)p(\theta, \mu, \tau^2) 
 \end{gather}
 
 We then must consider which priors to use for $\mu$ and $\tau^2$. This is a fairly important question. @Gelman-2017 discuss a case in which the choice of a uniform prior leads to completely incorrect posterior estimates and therefore misleading conclusions of a study. They state 
-\begin{quote}
-The dominance of the information encoded in the measurement depends not only on the size of
+
+>The dominance of the information encoded in the measurement depends not only on the size of
 the data but also on the structure of the likelihood and the effect being studied. The more complex the
-likelihood and the smaller the effect being considered, the more data are needed to render the prior irrelevant [@Gelman-2017].
-\end{quote}
+likelihood and the smaller the effect being considered, the more data are needed to render the prior irrelevant.
 
 This implies that in the small-sample world of meta-analysis, the prior is going to have a disproportionate effect. 
 
@@ -84,8 +83,7 @@ The half-cauchy distribution is a special case of the half-t distribution (and t
 where $\beta$ refers to the Beta function. It can allow for wider tails than the half-t, meaning that in the case of random effect models, it allows for larger estimates of the between-study variance [@Sheng-2017].
 
 We have presented three weakly informative prior distributions that can realistically constrain the between-study variance, while also maintaining some semblance of mathematical justification in the context of the likelihoods used in Bayesian meta-analysis; this does not, however, shake the sense of the somewhat arbitrary nature of these choices. To this -- abeit regarding only the half-cauchy -- @Polson-2012 say, 
-\begin{quote}
-    A natural question is: of all the hypergeometric inverted-beta priors, why choose the half-Cauchy? There is no iron-clad reason to do so, of course, and we can imagine many situations where subjective information would support a different choice. But in examining many other members of the class, we have observed that the half-Cauchy seems to occupy a sensible middle ground in terms of frequentist risk. 
-\end{quote}
+
+>A natural question is: of all the hypergeometric inverted-beta priors, why choose the half-Cauchy? There is no iron-clad reason to do so, of course, and we can imagine many situations where subjective information would support a different choice. But in examining many other members of the class, we have observed that the half-Cauchy seems to occupy a sensible middle ground in terms of frequentist risk. 
 
 Generalizing from this, each prior occupies the space of compromise between any staunch set of assumptions regarding the appropriate parameter values. Beyond that, one must apply such priors to their own meta-analysis of interest, and determine if, yes, indeed, these priors lead to reasonable results. That is, then, the next step that we take.

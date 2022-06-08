@@ -1,4 +1,4 @@
-\section{Discussion}
+# Discussion
 
 We have discussed Bayesian methods for estimating random-effects models in meta-analysis. In particular, we have focused on the effect of prior information when estimating the between-study variance. We discussed both informative and weakly informative priors, and took care to describe some theoretical results regarding weakly informative priors. We then conducted a Bayesian meta-analysis of our own, using studies on the effect of ivermectin as a treatment for COVID-19. We documented somewhat inconclusive findings. One reason for this may be the fact that the studies included in our meta-analysis are highly heterogenous in their effect, with quite different within-study variances. When allowing for posterior uncertainty in Bayesian inference, the heterogeneous effects increase the uncertainty in our estimates. 
 
