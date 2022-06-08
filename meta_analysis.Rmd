@@ -65,8 +65,8 @@ It is also important to mention that while the average RR of $\mu$ is less than 
         <td>Distribution</td>
         <td>Parameter</td>
         <td>Mean</td>
-        <td>5%</td>
-        <td>95%</td>
+        <td>5\\%</td>
+        <td>95\\%</td>
         <td></td>
     </tr>
     <tr>
@@ -79,7 +79,7 @@ It is also important to mention that while the average RR of $\mu$ is less than 
     </tr>
     <tr>
         <td></td>
-        <td>$	heta_{\text{new}}$</td>
+        <td>$\theta_{\text{new}}$</td>
         <td>0.5040</td>
         <td>0.0977</td>
         <td>2.6799</td>
