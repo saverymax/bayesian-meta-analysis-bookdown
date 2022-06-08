@@ -1,8 +1,10 @@
 eq:bayes
 eq:half-t
+eq:priors
 fig:prior-den
 fig:post-dens
 fig:tau-post-dens
+tab:rr
 fig:intervals
 tab:post-est-uniform
 tab:exp-post-est-uniform
@@ -23,3 +25,4 @@ sensitivity-analysis
 appendix
 posteriors
 tau-posteriors
+references
