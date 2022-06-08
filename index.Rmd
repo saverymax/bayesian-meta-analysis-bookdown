@@ -15,7 +15,7 @@ description: "Bookdown for Bayesian meta-analysis"
 
 This is the bookdown [@R-bookdown] report for my meta-analysis of ivermectin 
 as a treatment for COVID-19. This was originally intended as my course project
-for the meta-analysis course from KU Leuven. The code for the report is hosted at <https://github.com/saverymax/bayesian-meta-analysis-bookdown>.
+for the meta-analysis course from KU Leuven.The code for the report is hosted at <https://github.com/saverymax/bayesian-meta-analysis-bookdown>.
 
 To locally render the book, run 
 ```
