@@ -90,24 +90,3 @@ plot_post_intervals("ig", ig_post)
 plot_post_intervals("hc", hc_post)
 plot_post_intervals("ht", ht_post)
 ```
-
-
-Each table shows the posterior point estimates, under the log-scale and in 
-terms of the relative risk.
-
-```{r posteriors, results='asis', echo=FALSE, message=FALSE, warning=FALSE}
-print_estimates("uniform", uniform_post)
-print_estimates("inverse-gamma", ig_post)
-print_estimates("half-t", ht_post)
-print_estimates("half-cauchy", hc_post)
-```
-
-
-Here we show the posteriors for tau as generated under the different priors.
-
-```{r convergence, echo=FALSE, fig.show='hold', fig.cap="Posterior densities of tau", fig.subcap=c("","", "", ""), out.width="50%", fig.ncol=2}
-plot_convergence("uniform", uniform_post)
-plot_convergence("inverse-gamma", ig_post)
-plot_convergence("half-cauchy", hc_post)
-plot_convergence("half-t", ht_post)
-```
