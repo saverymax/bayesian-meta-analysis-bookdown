@@ -58,18 +58,82 @@ We can then proceed to discuss the changes in the RR ratio. Table \@ref(tab:rr) 
 
 It is also important to mention that while the average RR of $\mu$ is less than 1 in all models, $\theta_{\text{new}}$ takes quite a larger range, including values larger than 1 in the 90\% credible interval. In general, from this set of studies included in the meta-analysis, such a result makes it difficult to draw conclusions about ivermectin one way or the other. It may be that these studies are too heterogeneous to find conclusive evidence. This will be discussed further in the conclusion.
 
-Table: (\#tab:rr) Relative Risk posterior estimates, with different priors on $\tau$.
+<caption>Table: (\#tab:rr) Relative Risk posterior estimates, with different priors on $\tau$.</caption> 
 
-| Distribution | Parameter | Mean | 5\% | 95\%|    
-|.............:|..........:|.....:|....:|....:|    
-|Uniform | $\mu$ | 0.5099 | 0.2703 | 0.9669 |   
-|        | $\theta_{\text{new}}$ | 0.5040 | 0.0977 | 2.6799 |   
-| IG     |$\mu$ | 0.5118 | 0.3123 | 0.8284 |   
-|        |$\theta_{\text{new}}$ | 0.5144 | 0.1998 | 1.3313 |   
-| Half-c |$\mu$ | 0.5118 | 0.3192 | 0.8303 |    
-|        |$\theta_{\text{new}}$ | 0.5181 | 0.1872 | 1.3982 |   
-| Half-t |$\mu$ | 0.5173 | 0.3342 | 0.7796 |    
-|        |$\theta_{\text{new}}$ | 0.5188 | 0.2755 | 0.9794 |
+<table>
+    <tr>
+        <td>Distribution</td>
+        <td>Parameter</td>
+        <td>Mean</td>
+        <td>5%</td>
+        <td>95%</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Uniform</td>
+        <td>$\mu$</td>
+        <td>0.5099</td>
+        <td>0.2703</td>
+        <td>0.9669</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>$	heta_{\text{new}}$</td>
+        <td>0.5040</td>
+        <td>0.0977</td>
+        <td>2.6799</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>IG</td>
+        <td>$\mu$</td>
+        <td>0.5118</td>
+        <td>0.3123</td>
+        <td>0.8284</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>$\theta_{\text{new}}$</td>
+        <td>0.5144</td>
+        <td>0.1998</td>
+        <td>1.3313</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Half-c</td>
+        <td>$\mu$</td>
+        <td>0.5118</td>
+        <td>0.3192</td>
+        <td>0.8303</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>$\theta_{\text{new}}$</td>
+        <td>0.5181</td>
+        <td>0.1872</td>
+        <td>1.3982</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Half-t</td>
+        <td>$\mu$</td>
+        <td>0.5173</td>
+        <td>0.3342</td>
+        <td>0.7796</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>$\theta_{\text{new}}$</td>
+        <td>0.5188</td>
+        <td>0.2755</td>
+        <td>0.9794</td>
+        <td></td>
+    </tr>
+</table>
 
 Figure \@ref(fig:intervals) shows the credible intervals for the study-specific effects $\theta_i$, $\mu$, and $\theta_{\text{new}}$. This nicely illustrates the effect of our prior sensitivity analysis: The intervals for the uniform prior are really large compared to all other priors. While the intervals of the study-specific effects when using the inverse gamma and half-cauchy priors often include 1, the more informative half-t limits the spread of these intervals. Therefore, the conclusions of the meta-analysis need to be qualified based on this sensitivity analysis. At this point, it becomes less a statistical question and more one for the biomedical domain. Which of these studies has methodological errors, or are there other factors causing the observed effects to vary considerably and be quite sensitive to choice of prior? This question was discussed considerably in the medical literature and in social media; thus it is here we choose to conclude our prior sensitivity analysis.
 
