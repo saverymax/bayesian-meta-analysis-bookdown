@@ -22,6 +22,7 @@ informative-priors
 weakly-informative-priors
 bayesian-meta-analysis-on-ivermectin
 sensitivity-analysis
+discussion
 appendix
 posteriors
 tau-posteriors

@@ -81,11 +81,12 @@
 <li class="chapter" data-level="3" data-path="bayesian-meta-analysis-on-ivermectin.html"><a href="bayesian-meta-analysis-on-ivermectin.html"><i class="fa fa-check"></i><b>3</b> Bayesian meta-analysis on ivermectin</a><ul>
 <li class="chapter" data-level="3.1" data-path="bayesian-meta-analysis-on-ivermectin.html"><a href="bayesian-meta-analysis-on-ivermectin.html#sensitivity-analysis"><i class="fa fa-check"></i><b>3.1</b> Sensitivity analysis</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>4</b> Appendix</a><ul>
-<li class="chapter" data-level="4.1" data-path="appendix.html"><a href="appendix.html#posteriors"><i class="fa fa-check"></i><b>4.1</b> Posterior estimates</a></li>
-<li class="chapter" data-level="4.2" data-path="appendix.html"><a href="appendix.html#tau-posteriors"><i class="fa fa-check"></i><b>4.2</b> Tau posteriors</a></li>
+<li class="chapter" data-level="4" data-path="discussion.html"><a href="discussion.html"><i class="fa fa-check"></i><b>4</b> Discussion</a></li>
+<li class="chapter" data-level="5" data-path="appendix.html"><a href="appendix.html"><i class="fa fa-check"></i><b>5</b> Appendix</a><ul>
+<li class="chapter" data-level="5.1" data-path="appendix.html"><a href="appendix.html#posteriors"><i class="fa fa-check"></i><b>5.1</b> Posterior estimates</a></li>
+<li class="chapter" data-level="5.2" data-path="appendix.html"><a href="appendix.html#tau-posteriors"><i class="fa fa-check"></i><b>5.2</b> Tau posteriors</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>5</b> References</a></li>
+<li class="chapter" data-level="6" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i><b>6</b> References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/saverymax/bayesian-meta-analysis-bookdown" target="blank">Published with bookdown</a></li>
 
@@ -132,8 +133,12 @@ y_i \sim N(\theta_i, \sigma_i^2) \\
 <span class="math display">\[\begin{gather}
 p(\theta, \mu, \tau^2|y) \propto p(y|\theta, \mu, \tau^2)p(\theta, \mu, \tau^2) = \prod_{i=1}^{k}p(y_i|\theta_i,\sigma_i^2)p(\theta_i|\mu,\tau^2)p(\mu, \tau^2)
 \end{gather}\]</span></p>
-We then must consider which priors to use for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\tau^2\)</span>. This is a fairly important question. <span class="citation">Gelman, Simpson, and Betancourt (<a href="#ref-Gelman-2017" role="doc-biblioref">2017</a>)</span> discuss a case in which the choice of a uniform prior leads to completely incorrect posterior estimates and therefore misleading conclusions of a study. They state
-
+<p>We then must consider which priors to use for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\tau^2\)</span>. This is a fairly important question. <span class="citation">Gelman, Simpson, and Betancourt (<a href="#ref-Gelman-2017" role="doc-biblioref">2017</a>)</span> discuss a case in which the choice of a uniform prior leads to completely incorrect posterior estimates and therefore misleading conclusions of a study. They state</p>
+<blockquote>
+<p>The dominance of the information encoded in the measurement depends not only on the size of
+the data but also on the structure of the likelihood and the effect being studied. The more complex the
+likelihood and the smaller the effect being considered, the more data are needed to render the prior irrelevant.</p>
+</blockquote>
 <p>This implies that in the small-sample world of meta-analysis, the prior is going to have a disproportionate effect.</p>
 <p>The priors for the parameters in our model can be chosen with various justifications. We discuss two “camps” of priors: those that are informative and those that are ostensibly less informative–which we will refer to as weakly informative. We will briefly discuss informative priors and then spend the rest of this review discussing and applying weakly informative priors.</p>
 </div>
@@ -163,8 +168,10 @@ We then must consider which priors to use for <span class="math inline">\(\mu\)<
     p(\tau) = \frac{(\tau)^{-1/2}(1+\tau^2)^{-1}}{\beta(1/2,1/2)}
 \end{gather}\]</span></p>
 <p>where <span class="math inline">\(\beta\)</span> refers to the Beta function. It can allow for wider tails than the half-t, meaning that in the case of random effect models, it allows for larger estimates of the between-study variance <span class="citation">(Sheng <a href="#ref-Sheng-2017" role="doc-biblioref">2017</a>)</span>.</p>
-We have presented three weakly informative prior distributions that can realistically constrain the between-study variance, while also maintaining some semblance of mathematical justification in the context of the likelihoods used in Bayesian meta-analysis; this does not, however, shake the sense of the somewhat arbitrary nature of these choices. To this – abeit regarding only the half-cauchy – <span class="citation">Polson and Scott (<a href="#ref-Polson-2012" role="doc-biblioref">2012</a>)</span> say,
-
+<p>We have presented three weakly informative prior distributions that can realistically constrain the between-study variance, while also maintaining some semblance of mathematical justification in the context of the likelihoods used in Bayesian meta-analysis; this does not, however, shake the sense of the somewhat arbitrary nature of these choices. To this – abeit regarding only the half-cauchy – <span class="citation">Polson and Scott (<a href="#ref-Polson-2012" role="doc-biblioref">2012</a>)</span> say,</p>
+<blockquote>
+<p>A natural question is: of all the hypergeometric inverted-beta priors, why choose the half-Cauchy? There is no iron-clad reason to do so, of course, and we can imagine many situations where subjective information would support a different choice. But in examining many other members of the class, we have observed that the half-Cauchy seems to occupy a sensible middle ground in terms of frequentist risk.</p>
+</blockquote>
 <p>Generalizing from this, each prior occupies the space of compromise between any staunch set of assumptions regarding the appropriate parameter values. Beyond that, one must apply such priors to their own meta-analysis of interest, and determine if, yes, indeed, these priors lead to reasonable results. That is, then, the next step that we take.</p>
 
 </div>
