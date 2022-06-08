@@ -12,7 +12,6 @@ Here we provide a brief introduction to Bayesian methods in general and then des
 
 In the Bayesian framework, the likelihood of observed data is combined with a prior distribution that represents historical information. This is commonly written as
 \begin{gather}
-\label{eq:bayes}
 p(\theta|y) \propto p(y|\theta)p(\theta)
 (\#eq:bayes)
 \end{gather}
@@ -30,12 +29,12 @@ y_i \sim N(\theta_i, \sigma_i^2) \\
 
 where $y_i$ is the effect we observe in each study $i=1,...,N$, $\theta_i$ is the mean effect within the context of study $i$, $\sigma_i^2$ is the variance within that study, $\mu$ is the mean effect of the studies, and $\tau^2$ is the between-study variance. The effect for a given study $i$ is drawn from $N(\mu, \tau^2)$, as opposed to being fixed (as in the fixed effect model). Notice that the effect from each study, $\theta_i$, shares a distribution $N(\mu, \tau^2)$ with all other studies [@Harrer-2021] 
 
-Using Equation \ref{eq:bayes}, the joint posterior density of the random effects model will be
+Using Equation \@ref(eq:bayes), the joint posterior density of the random effects model will be
 \begin{gather}
 p(\theta, \mu, \tau^2|y) \propto p(y|\theta, \mu, \tau^2)p(\theta, \mu, \tau^2) = \prod_{i=1}^{k}p(y_i|\theta_i,\sigma_i^2)p(\theta_i|\mu,\tau^2)p(\mu, \tau^2)
 \end{gather}
 
-We then must consider which priors to use for $\mu$ and $\tau^2$. This is a fairly important question. \cite{Gelman-2017} discuss a case in which the choice of a uniform prior leads to completely incorrect posterior estimates and therefore misleading conclusions of a study. They state 
+We then must consider which priors to use for $\mu$ and $\tau^2$. This is a fairly important question. @Gelman-2017 discuss a case in which the choice of a uniform prior leads to completely incorrect posterior estimates and therefore misleading conclusions of a study. They state 
 \begin{quote}
 The dominance of the information encoded in the measurement depends not only on the size of
 the data but also on the structure of the likelihood and the effect being studied. The more complex the
