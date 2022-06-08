@@ -145,19 +145,69 @@ Figure 3.2: Posterior densities of parameters estimated from random effects mode
 Figure 3.3: Posterior densities of tau
 </p>
 </div>
-<p>We can then proceed to discuss the changes in the RR ratio. Table <a href="#tab:rr">3.1</a> shows the RR estimates of <span class="math inline">\(\mu\)</span> and - <span class="math inline">\(\theta_{\text{new}}\)</span> for all different priors. We can see that the mean estimates themselves do not change in large amounts, which makes sense given that the only difference between the models presented here is the prior on the between-study variance. So while we don’t expect the point estimates to change, the credible intervals for these point estimates will. For example, we can see that the interval for <span class="math inline">\(\mu\)</span> goes from <span class="math inline">\((0.2703, 0.9669)\)</span> when using the uniform prior on <span class="math inline">\(\tau\)</span> to <span class="math inline">\((0.3192, 0.8303)\)</span> and <span class="math inline">\((0.3342, 0.7796)\)</span> for the half-cauchy and half-t priors, respectively. Even more interesting, the interval for <span class="math inline">\(\theta_{\text{new}}\)</span> goes from <span class="math inline">\((0.1872, 1.3982)\)</span> when using the half-cauchy prior to <span class="math inline">\((0.2755, 0.9794)\)</span> when using the half-t. This is indicative of the extent to which our meta-analysis conclusions can change based on the prior; in the half-cauchy case we would say that a future effect could result in a positive or negative change in outcome for ivermectin treatment, but when using the half-t we would conclude that ivermectin has either a negligible effect to a large positive effect. But in either case, the intervals are very wide.</p>
+<p>We can then proceed to discuss the changes in the RR ratio. Table <a href="bayesian-meta-analysis-on-ivermectin.html#tab:rr">3.1</a> shows the RR estimates of <span class="math inline">\(\mu\)</span> and - <span class="math inline">\(\theta_{\text{new}}\)</span> for all different priors. We can see that the mean estimates themselves do not change in large amounts, which makes sense given that the only difference between the models presented here is the prior on the between-study variance. So while we don’t expect the point estimates to change, the credible intervals for these point estimates will. For example, we can see that the interval for <span class="math inline">\(\mu\)</span> goes from <span class="math inline">\((0.2703, 0.9669)\)</span> when using the uniform prior on <span class="math inline">\(\tau\)</span> to <span class="math inline">\((0.3192, 0.8303)\)</span> and <span class="math inline">\((0.3342, 0.7796)\)</span> for the half-cauchy and half-t priors, respectively. Even more interesting, the interval for <span class="math inline">\(\theta_{\text{new}}\)</span> goes from <span class="math inline">\((0.1872, 1.3982)\)</span> when using the half-cauchy prior to <span class="math inline">\((0.2755, 0.9794)\)</span> when using the half-t. This is indicative of the extent to which our meta-analysis conclusions can change based on the prior; in the half-cauchy case we would say that a future effect could result in a positive or negative change in outcome for ivermectin treatment, but when using the half-t we would conclude that ivermectin has either a negligible effect to a large positive effect. But in either case, the intervals are very wide.</p>
 <p>It is also important to mention that while the average RR of <span class="math inline">\(\mu\)</span> is less than 1 in all models, <span class="math inline">\(\theta_{\text{new}}\)</span> takes quite a larger range, including values larger than 1 in the 90% credible interval. In general, from this set of studies included in the meta-analysis, such a result makes it difficult to draw conclusions about ivermectin one way or the other. It may be that these studies are too heterogeneous to find conclusive evidence. This will be discussed further in the conclusion.</p>
-<p>Table: (#tab:rr) Relative Risk posterior estimates, with different priors on <span class="math inline">\(\tau\)</span>.</p>
-<div class="line-block">Distribution | Parameter | Mean | 5% | 95%|</div>
-<p>|………….:|……….:|…..:|….:|….:|<br />
-|Uniform | <span class="math inline">\(\mu\)</span> | 0.5099 | 0.2703 | 0.9669 |<br />
-| | <span class="math inline">\(\theta_{\text{new}}\)</span> | 0.5040 | 0.0977 | 2.6799 |<br />
-| IG |<span class="math inline">\(\mu\)</span> | 0.5118 | 0.3123 | 0.8284 |<br />
-| |<span class="math inline">\(\theta_{\text{new}}\)</span> | 0.5144 | 0.1998 | 1.3313 |<br />
-| Half-c |<span class="math inline">\(\mu\)</span> | 0.5118 | 0.3192 | 0.8303 |<br />
-| |<span class="math inline">\(\theta_{\text{new}}\)</span> | 0.5181 | 0.1872 | 1.3982 |<br />
-| Half-t |<span class="math inline">\(\mu\)</span> | 0.5173 | 0.3342 | 0.7796 |<br />
-| |<span class="math inline">\(\theta_{\text{new}}\)</span> | 0.5188 | 0.2755 | 0.9794 |</p>
+<caption>
+Table: <span id="tab:rr">Table 3.1: </span> Relative Risk posterior estimates, with different priors on <span class="math inline">\(\tau\)</span>.
+</caption>
+<table>
+<tr>
+<td>
+Distribution
+</td>
+<td>
+Parameter
+</td>
+<td>
+Mean
+</td>
+<td>
+5%
+</td>
+<td>
+95%
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+Uniform
+</td>
+<td>
+<span class="math inline">\(\mu\)</span>
+</td>
+<td>
+0.5099
+</td>
+<td>
+0.2703
+</td>
+<td>
+0.9669
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td>
+$ heta_{}<span class="math inline">\(&lt;/td&gt;  &lt;td&gt;0.5040&lt;/td&gt;  &lt;td&gt;0.0977&lt;/td&gt;  &lt;td&gt;2.6799&lt;/td&gt;  &lt;td&gt;&lt;/td&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;IG&lt;/td&gt;  &lt;td&gt;\)</span><span class="math inline">\(&lt;/td&gt;  &lt;td&gt;0.5118&lt;/td&gt;  &lt;td&gt;0.3123&lt;/td&gt;  &lt;td&gt;0.8284&lt;/td&gt;  &lt;td&gt;&lt;/td&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;&lt;/td&gt;  &lt;td&gt;\)</span><em>{}<span class="math inline">\(&lt;/td&gt;  &lt;td&gt;0.5144&lt;/td&gt;  &lt;td&gt;0.1998&lt;/td&gt;  &lt;td&gt;1.3313&lt;/td&gt;  &lt;td&gt;&lt;/td&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;Half-c&lt;/td&gt;  &lt;td&gt;\)</span><span class="math inline">\(&lt;/td&gt;  &lt;td&gt;0.5118&lt;/td&gt;  &lt;td&gt;0.3192&lt;/td&gt;  &lt;td&gt;0.8303&lt;/td&gt;  &lt;td&gt;&lt;/td&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;&lt;/td&gt;  &lt;td&gt;\)</span></em>{}<span class="math inline">\(&lt;/td&gt;  &lt;td&gt;0.5181&lt;/td&gt;  &lt;td&gt;0.1872&lt;/td&gt;  &lt;td&gt;1.3982&lt;/td&gt;  &lt;td&gt;&lt;/td&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;Half-t&lt;/td&gt;  &lt;td&gt;\)</span><span class="math inline">\(&lt;/td&gt;  &lt;td&gt;0.5173&lt;/td&gt;  &lt;td&gt;0.3342&lt;/td&gt;  &lt;td&gt;0.7796&lt;/td&gt;  &lt;td&gt;&lt;/td&gt;  &lt;/tr&gt;  &lt;tr&gt;  &lt;td&gt;&lt;/td&gt;  &lt;td&gt;\)</span>_{}$
+</td>
+<td>
+0.5188
+</td>
+<td>
+0.2755
+</td>
+<td>
+0.9794
+</td>
+<td>
+</td>
+</tr>
+</table>
 <p>Figure <a href="bayesian-meta-analysis-on-ivermectin.html#fig:intervals">3.4</a> shows the credible intervals for the study-specific effects <span class="math inline">\(\theta_i\)</span>, <span class="math inline">\(\mu\)</span>, and <span class="math inline">\(\theta_{\text{new}}\)</span>. This nicely illustrates the effect of our prior sensitivity analysis: The intervals for the uniform prior are really large compared to all other priors. While the intervals of the study-specific effects when using the inverse gamma and half-cauchy priors often include 1, the more informative half-t limits the spread of these intervals. Therefore, the conclusions of the meta-analysis need to be qualified based on this sensitivity analysis. At this point, it becomes less a statistical question and more one for the biomedical domain. Which of these studies has methodological errors, or are there other factors causing the observed effects to vary considerably and be quite sensitive to choice of prior? This question was discussed considerably in the medical literature and in social media; thus it is here we choose to conclude our prior sensitivity analysis.</p>
 <div class="figure"><span style="display:block;" id="fig:intervals"></span>
 <img src="bayesian-meta-analysis_files/figure-html/intervals-1.png" alt="Equal tail credible intervals, for RR of posterior estimates" width="50%" /><img src="bayesian-meta-analysis_files/figure-html/intervals-2.png" alt="Equal tail credible intervals, for RR of posterior estimates" width="50%" /><img src="bayesian-meta-analysis_files/figure-html/intervals-3.png" alt="Equal tail credible intervals, for RR of posterior estimates" width="50%" /><img src="bayesian-meta-analysis_files/figure-html/intervals-4.png" alt="Equal tail credible intervals, for RR of posterior estimates" width="50%" />
