@@ -14,6 +14,7 @@ In the Bayesian framework, the likelihood of observed data is combined with a pr
 \begin{gather}
 \label{eq:bayes}
 p(\theta|y) \propto p(y|\theta)p(\theta)
+(\#eq:bayes)
 \end{gather}
 where $\theta$ represents a vector of the parameters in our model and $y$ the vector of observations [@Gelman-2013]. This distribution is referred to as the posterior density. $\propto$ represents the proportionality due to the normalizing constant which makes the posterior a proper density. 
 
@@ -27,7 +28,7 @@ y_i \sim N(\theta_i, \sigma_i^2) \\
 (\mu, \tau^2) \sim prior(.)
 \end{gather}
 
-where $y_i$ is the effect we observe in each study $i=1,...,N$, $\theta_i$ is the mean effect within the context of study $i$, $\sigma_i^2$ is the variance within that study, $\mu$ is the mean effect of the studies, and $\tau^2$ is the between-study variance. The effect for a given study $i$ is drawn from $N(\mu, \tau^2)$, as opposed to being fixed (as in the fixed effect model). Notice that the effect from each study, $\theta_i$, shares a distribution $N(\mu, \tau^2)$ with all other studies \parencite{Harrer-2021}. 
+where $y_i$ is the effect we observe in each study $i=1,...,N$, $\theta_i$ is the mean effect within the context of study $i$, $\sigma_i^2$ is the variance within that study, $\mu$ is the mean effect of the studies, and $\tau^2$ is the between-study variance. The effect for a given study $i$ is drawn from $N(\mu, \tau^2)$, as opposed to being fixed (as in the fixed effect model). Notice that the effect from each study, $\theta_i$, shares a distribution $N(\mu, \tau^2)$ with all other studies [@Harrer-2021] 
 
 Using Equation \ref{eq:bayes}, the joint posterior density of the random effects model will be
 \begin{gather}
@@ -72,11 +73,11 @@ It is often used as a weakly informative prior due to the fact that it is conjug
 We next consider the half-t prior. The half-t distribution is a special case of the folded-t distribution where the $\mu$ parameter (not shown) is equal to 0 \footnote{See \url{https://en.wikipedia.org/wiki/Folded-t_and_half-t_distributions}}. @Gelman-2006 make the case for the use of this prior as a replacement to the inverse-gamma, in order to avoid the issues with inverse-gamma when $\tau^2$ is small. The half-t is defined as 
 
 \begin{gather}
-\label{eq:half-t}
     p(\tau) \propto \Bigg(1 + \frac{1}{\nu}\Big(\frac{\tau}{2}\Big)^2\Bigg)^{-(\nu+1)/2}
+(\#eq:half-t)
 \end{gather}
 
-The half-cauchy distribution is a special case of the half-t distribution (and therefore the folded-t), where $\nu=1$ in Equation \ref{eq:half-t}. More exactly, it is defined as
+The half-cauchy distribution is a special case of the half-t distribution (and therefore the folded-t), where $\nu=1$ in Equation \@ref(eq:half-t). More exactly, it is defined as
 \begin{gather}
     p(\tau) = \frac{(\tau)^{-1/2}(1+\tau^2)^{-1}}{\beta(1/2,1/2)}
 \end{gather}
