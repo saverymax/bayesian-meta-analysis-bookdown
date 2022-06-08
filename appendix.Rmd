@@ -1,6 +1,6 @@
 # Appendix
 
-## Posterior estimates
+## Posterior estimates {#posteriors}
 
 Each table shows the posterior point estimates, under the log-scale and in 
 terms of the relative risk.
@@ -12,7 +12,7 @@ ht_post <- print_estimates("half-t", ht_post)
 hc_post <- print_estimates("half-cauchy", hc_post)
 ```
 
-## Tau posteriors
+## Tau posteriors {#tau-posteriors}
 
 Here we show the posterior for tau as generated under the different priors.
 
