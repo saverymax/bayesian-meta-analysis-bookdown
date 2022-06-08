@@ -13,9 +13,9 @@ description: "Bookdown for Bayesian meta-analysis"
 ---
 # Technical preface
 
-This is the bookdown \parencite{R-bookdown} report for my meta-analysis of ivermectin 
+This is the bookdown [@R-bookdown] report for my meta-analysis of ivermectin 
 as a treatment for COVID-19. This was originally intended as my course project
-for the meta-analysis course from KU Leuven. The report is hosted at <https://saverymax.github.io/bayesian-meta-analysis-bookdown/>
+for the meta-analysis course from KU Leuven. The code for the report is hosted at <https://github.com/saverymax/bayesian-meta-analysis-bookdown>.
 
 To locally render the book, run 
 ```
@@ -23,13 +23,7 @@ install.packages("bookdown")
 bookdown::render_book('index.Rmd', 'bookdown::pdf_book')
 ```
 ```{r libs, include=FALSE}
-library("cmdstanr")
-library("bayesplot")
-library("ggplot2")
-library("extraDistr")
-library("dplyr")
-library("tidyr")
-library("kableExtra")
+ 
 ```
 ```{r include=FALSE}
 # automatically create a bib database for R packages
