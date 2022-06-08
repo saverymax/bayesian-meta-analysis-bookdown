@@ -5,11 +5,11 @@
 Each table shows the posterior point estimates, under the log-scale and in 
 terms of the relative risk.
 
-```{r posteriors, results='as-is', echo=FALSE, message=FALSE, warning=FALSE}
-uniform_post <- print_estimates("uniform", uniform_post)
-ig_post <- print_estimates("inverse-gamma", ig_post)
-ht_post <- print_estimates("half-t", ht_post)
-hc_post <- print_estimates("half-cauchy", hc_post)
+```{r posteriors, results='asis', echo=FALSE, message=FALSE, warning=FALSE}
+print_estimates("uniform", uniform_post)
+print_estimates("inverse-gamma", ig_post)
+print_estimates("half-t", ht_post)
+print_estimates("half-cauchy", hc_post)
 ```
 
 ## Tau posteriors {#tau-posteriors}
