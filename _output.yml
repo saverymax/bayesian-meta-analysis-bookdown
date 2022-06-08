@@ -12,6 +12,5 @@ bookdown::pdf_book:
   includes:
     in_header: preamble.tex
   citation_package: biblatex
-  keep_tex: yes
   extra_dependencies: "subfig"
   fig_caption: true
