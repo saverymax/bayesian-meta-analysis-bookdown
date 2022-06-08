@@ -5,7 +5,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">Bayesian meta-analysis on the effect of ivermectin as a treatment for COVID-19</a></li>
       after: |
-        <li><a href="https://github.com/saverymax/sem-political-trust" target="blank">Published with bookdown</a></li>
+        <li><a href="https://github.com/saverymax/bayesian-meta-analysis-bookdown" target="blank">Published with bookdown</a></li>
     edit: https://github.com/saverymax/sem-political-trust/edit/main/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:
