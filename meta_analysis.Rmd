@@ -2,7 +2,6 @@
 
 Having discussed Bayesian methods for estimating random effects models in meta-analyses, with a particular focus on the use of weakly informative priors, we are now prepared to conduct a Bayesian meta-analysis of our own. The data this meta-analysis we use was reconstructed by @Gelman-blog in a blog post ^[The data was taken by Gelman from another blog by @Marino-blog. In fact, the online ivermectin debate is something of a very long blog chain echoing between various social media platforms.]. This post discusses the effect of the anti-parasitic medication ivermectin. It should be noted that there is little evidence that ivermectin is an effective treatment for COVID-19, and studies around this area have been rife with pseudoscience and suspiscious data. The purpose of the blog post was to further discuss how one might draw false positive results in a meta-analysis, with a bayesian treatment of studies related to ivermectin, and so we extend that here.
 
-
 This data used in this analysis is on the log scale (log of the odds ratio), so that we can exponentiate the cofficients from our Bayesian model to get the relative risk (RR). The RR is the multiplicative factor by which the mean of individuals in group $x_i$ is equal to $\exp(B_i)$ times the mean of individuals in the reference group, keeping all other covariates
 equal. For a RR of 50\%, we say that the treatment resulted in a 50\% improvement relative to the control. In the case of the results presented here, we say that patients treated with ivermectin had a $p$\% improvement, depending on the outcome measured in the studies.
 
@@ -60,19 +59,18 @@ We can then proceed to discuss the changes in the RR ratio. Table \@ref(tab:rr) 
 
 It is also important to mention that while the average RR of $\mu$ is less than 1 in all models, $\theta_{\text{new}}$ takes quite a larger range, including values larger than 1 in the 90\% credible interval. In general, from this set of studies included in the meta-analysis, such a result makes it difficult to draw conclusions about ivermectin one way or the other. It may be that these studies are too heterogeneous to find conclusive evidence. This will be discussed further in the conclusion.
 
-```{r rr, echo=FALSE, results='asis'}
-cat('Table: (\\#tab:rr) Relative Risk posterior estimates, with different priors on $\tau$.
-| Distribution | Parameter | Mean | 5\% | 95\%|
-|.............:|..........:|.....:|....:|....:|
-|Uniform | $\mu$ | 0.5099 | 0.2703 | 0.9669 |
-| | $\theta_{\text{new}}$ | 0.5040 | 0.0977 | 2.6799 |
-| IG |$\mu$ | 0.5118 | 0.3123 | 0.8284 |
-|$\theta_{\text{new}}$ | 0.5144 | 0.1998 | 1.3313 |
-| Half-cauchy |$\mu$ | 0.5118 | 0.3192 | 0.8303 |
-| |$\theta_{\text{new}}$ | 0.5181 | 0.1872 | 1.3982 |
-| Half-t |$\mu$ | 0.5173 | 0.3342 | 0.7796 |
-| |$\theta_{\text{new}}$ | 0.5188 | 0.2755 | 0.9794 |')
-```
+Table: (\#tab:rr) Relative Risk posterior estimates, with different priors on $\tau$.
+
+| Distribution | Parameter | Mean | 5\% | 95\%|    
+|.............:|..........:|.....:|....:|....:|    
+|Uniform | $\mu$ | 0.5099 | 0.2703 | 0.9669 |   
+|        | $\theta_{\text{new}}$ | 0.5040 | 0.0977 | 2.6799 |   
+| IG     |$\mu$ | 0.5118 | 0.3123 | 0.8284 |   
+|        |$\theta_{\text{new}}$ | 0.5144 | 0.1998 | 1.3313 |   
+| Half-c |$\mu$ | 0.5118 | 0.3192 | 0.8303 |    
+|        |$\theta_{\text{new}}$ | 0.5181 | 0.1872 | 1.3982 |   
+| Half-t |$\mu$ | 0.5173 | 0.3342 | 0.7796 |    
+|        |$\theta_{\text{new}}$ | 0.5188 | 0.2755 | 0.9794 |
 
 Figure \@ref(fig:intervals) shows the credible intervals for the study-specific effects $\theta_i$, $\mu$, and $\theta_{\text{new}}$. This nicely illustrates the effect of our prior sensitivity analysis: The intervals for the uniform prior are really large compared to all other priors. While the intervals of the study-specific effects when using the inverse gamma and half-cauchy priors often include 1, the more informative half-t limits the spread of these intervals. Therefore, the conclusions of the meta-analysis need to be qualified based on this sensitivity analysis. At this point, it becomes less a statistical question and more one for the biomedical domain. Which of these studies has methodological errors, or are there other factors causing the observed effects to vary considerably and be quite sensitive to choice of prior? This question was discussed considerably in the medical literature and in social media; thus it is here we choose to conclude our prior sensitivity analysis.
 
