@@ -61,7 +61,7 @@ We can then proceed to discuss the changes in the RR ratio. Table \@ref(tab:rr) 
 It is also important to mention that while the average RR of $\mu$ is less than 1 in all models, $\theta_{\text{new}}$ takes quite a larger range, including values larger than 1 in the 90\% credible interval. In general, from this set of studies included in the meta-analysis, such a result makes it difficult to draw conclusions about ivermectin one way or the other. It may be that these studies are too heterogeneous to find conclusive evidence. This will be discussed further in the conclusion.
 
 ```{r rr, echo=FALSE, results='asis'}
-cat('Table: (\#tab:rr) Relative Risk posterior estimates, with different priors on $\tau$.
+cat('Table: (\\#tab:rr) Relative Risk posterior estimates, with different priors on $\tau$.
 | Distribution | Parameter | Mean | 5\% | 95\%|
 |.............:|..........:|.....:|....:|....:|
 |Uniform | $\mu$ | 0.5099 | 0.2703 | 0.9669 |
