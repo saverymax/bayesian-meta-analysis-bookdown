@@ -5,14 +5,14 @@ Having discussed Bayesian methods for estimating random effects models in meta-a
 This data used in this analysis is on the log scale (log of the odds ratio), so that we can exponentiate the cofficients from our Bayesian model to get the relative risk (RR). The RR is the multiplicative factor by which the mean of individuals in group $x_i$ is equal to $\exp(B_i)$ times the mean of individuals in the reference group, keeping all other covariates
 equal. For a RR of 50\%, we say that the treatment resulted in a 50\% improvement relative to the control. In the case of the results presented here, we say that patients treated with ivermectin had a $p$\% improvement, depending on the outcome measured in the studies.
 
-We first fit a random-effects model on the data using Stan, and then conduct a sensitivity analysis. The Stan models, including their priors, can be found in Section \@ref(sec:stan} of the appendix. 
+We first fit a random-effects model on the data using Stan, and then conduct a sensitivity analysis. The Stan models, including their priors, can be found in Section \@ref(sec:stan) of the appendix. 
 
 
 ## Sensitivity analysis
 
 Having introduced the topic of our meta-analysis and the means by which we will conduct it, we now proceed to discuss the extent to which the posterior estimates and intervals change when the priors on the between-study variance are altered. In Bayesian data analysis, this is known as a prior sensitivity analysis. The intent of our sensitivity analysis is to determine the effect that altering the weak prior has on our posterior estimates and conclusions of the meta-analysis. As described above, we use the inverse-gamma\footnote{The inverse-gamma on $\tau$ that we use here is not strictly weakly informative, in that it is a recommendation following @Gronau-2017, but we consider it weakly informative for the sake of our sensitivity analysis. We could specify the non-informative IG prior on $\tau^2$ but the density must be transformed to get $\tau$.}, the half-t distribution, and the half-cauchy, roughly following the work @Williams-2018. For reference, we also include a uniform prior, though this is not recommended due to the improper posteriors that can result from its use [@Gelman-2006].
 
-We use the following priors with the hyperparameters shown in Equation \@ref(eq:priors}, following @Williams-2018. The prior densities are shown in Figure \@ref(fig:prior-den}. We also include a uniform prior of U$(0,10)$ to demonstrate the effect of an unrealistic prior. It is unreasonable to assume that the between-study variance is distributed uniformly from 0 all the way to 10, 10 being quite large in this context.
+We use the following priors with the hyperparameters shown in Equation \@ref(eq:priors), following @Williams-2018. The prior densities are shown in Figure \@ref(fig:prior-den). We also include a uniform prior of U$(0,10)$ to demonstrate the effect of an unrealistic prior. It is unreasonable to assume that the between-study variance is distributed uniformly from 0 all the way to 10, 10 being quite large in this context.
 
 \begin{equation}
 \label{eq:priors}

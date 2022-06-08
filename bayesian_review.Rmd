@@ -57,9 +57,9 @@ Taking a a different approach, @Rhodes-2016 consider how to generate informative
 
 As mentioned, the choice of prior is a fairly important decision, but also a somewhat contentious one. The reason for this is that the choice brings together arguments from statistical theory, philosophy, and domain-specific expertise. There are certain statistical properties that must be considered in the choice of the prior, namely conjugacy and impropriety of the posterior. But these mathematical properties don't dilute the real-world phenomenon that we are modelling, and thus philosophical arguments regarding what type of information the prior provides and expert opinion regarding the relevance of the information provided by the prior must always be taken into account.
 
-Weakly informative priors are those that do not consider information from previous studies but still constrain the estimates of the parameters to a realistic or meaningful range of values. They often have desirable mathematical properties as well. That is to say, all priors come with their own set of assumptions, so that there is no such thing as a non-informative prior, but it is possible to select priors that contribute less information than others @Gelman-2017. 
+Weakly informative priors are those that do not consider information from previous studies but still constrain the estimates of the parameters to a realistic or meaningful range of values. They often have desirable mathematical properties as well. That is to say, all priors come with their own set of assumptions, so that there is no such thing as a non-informative prior, but it is possible to select priors that contribute less information than others [@Gelman-2017]. 
 
-We will discuss three weakly informative priors previously used for Baysesian meta-analysis: inverse-gamma, half-t, and half-cauchy distributions. Following this discussion, we will apply these priors in our own prior sensitivity analysis.
+We will discuss three weakly informative priors previously used for Bayesian meta-analysis: inverse-gamma, half-t, and half-cauchy distributions. Following this discussion, we will apply these priors in our own prior sensitivity analysis.
 
 The inverse-gamma prior for $\tau^2$ can be written as
 
@@ -83,7 +83,7 @@ The half-cauchy distribution is a special case of the half-t distribution (and t
 
 where $\beta$ refers to the Beta function. It can allow for wider tails than the half-t, meaning that in the case of random effect models, it allows for larger estimates of the between-study variance [@Sheng-2017].
 
-We have presented three weakly informative prior distributions that can realistically constrain the between-study variance, while also maintaining some semblance of mathematical justification in the context of the likelihoods used in Bayesian meta-analysis; this does not, however, shake the sense of the somewhat arbitrary nature of these choices. To this--abeit regarding only the half-cauchy--@Polson-2012 say, 
+We have presented three weakly informative prior distributions that can realistically constrain the between-study variance, while also maintaining some semblance of mathematical justification in the context of the likelihoods used in Bayesian meta-analysis; this does not, however, shake the sense of the somewhat arbitrary nature of these choices. To this -- abeit regarding only the half-cauchy -- @Polson-2012 say, 
 \begin{quote}
     A natural question is: of all the hypergeometric inverted-beta priors, why choose the half-Cauchy? There is no iron-clad reason to do so, of course, and we can imagine many situations where subjective information would support a different choice. But in examining many other members of the class, we have observed that the half-Cauchy seems to occupy a sensible middle ground in terms of frequentist risk. 
 \end{quote}
