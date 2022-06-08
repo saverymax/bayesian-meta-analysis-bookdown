@@ -23,7 +23,13 @@ install.packages("bookdown")
 bookdown::render_book('index.Rmd', 'bookdown::pdf_book')
 ```
 ```{r libs, include=FALSE}
- 
+library("cmdstanr")
+library("bayesplot")
+library("ggplot2")
+library("extraDistr")
+library("dplyr")
+library("tidyr")
+library("kableExtra")
 ```
 ```{r include=FALSE}
 # automatically create a bib database for R packages
