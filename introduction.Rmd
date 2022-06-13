@@ -1,4 +1,4 @@
-\section{Introduction}
+# Introduction
 
 This report reviews Bayesian methods for estimating random effect models for meta-analysis, with a particular focus on the effect of prior information. Then, using summary data from studies conducted to measure the effect of ivermectin as a treatment for COVID-19, we demonstrate the use of Bayesian methods for meta-analysis, experimenting with the effect of different priors on the between-study variance.
 
