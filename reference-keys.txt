@@ -16,6 +16,7 @@ tab:post-est-half-cauchy
 tab:exp-post-est-half-cauchy
 fig:convergence
 technical-preface
+introduction
 bayesian-methods-for-meta-analysis
 why-bayesian
 informative-priors
