@@ -63,7 +63,7 @@ We will discuss three weakly informative priors previously used for Bayesian met
 The inverse-gamma prior for $\tau^2$ can be written as
 
 \begin{gather}
-    p(\tau^2) = \frac{\beta^{\alpha}}{\Gamma(\alpha)}(\tau^2)^{-(\alpha+1)}\exp\Bigg(\frac{\beta}{\tau^2}\Bigg)
+    p(\tau^2) = \frac{\beta^{\alpha}}{\Gamma(\alpha)}(\tau^2)^{-(\alpha+1)}\exp\Bigg(\frac{-\beta}{\tau^2}\Bigg)
 \end{gather}
 
 It is often used as a weakly informative prior due to the fact that it is conjugate for $\tau^2$ in the random effects model. However, the posterior is sensitive to the value of $\alpha$ and $\beta$ when $\tau^2$ is small [@Gelman-2006]. This means that the inverse-gamma is not strictly weakly informative, as it incorporates information based on ones choice of $\alpha$ and $\beta$. A weakly informative prior should be invariant to this sort of hyperparameter selection. Relatedly, @Polson-2012 argue that the inverse-gamma distribution pulls $\tau^2$ values away from 0, which nullifies its weakly informative properties in the case where $\tau^2$ is small. 
@@ -71,16 +71,17 @@ It is often used as a weakly informative prior due to the fact that it is conjug
 We next consider the half-t prior. The half-t distribution is a special case of the folded-t distribution where the $\mu$ parameter (not shown) is equal to 0 \footnote{See \url{https://en.wikipedia.org/wiki/Folded-t_and_half-t_distributions}}. @Gelman-2006 make the case for the use of this prior as a replacement to the inverse-gamma, in order to avoid the issues with inverse-gamma when $\tau^2$ is small. The half-t is defined as 
 
 \begin{gather}
-    p(\tau) \propto \Bigg(1 + \frac{1}{\nu}\Big(\frac{\tau}{2}\Big)^2\Bigg)^{-(\nu+1)/2}
+    p(\tau) \propto \Bigg(1 + \frac{1}{\nu}\Big(\frac{\tau}{A}\Big)^2\Bigg)^{-(\nu+1)/2}
 (\#eq:half-t)
 \end{gather}
+where $\nu$ is the degrees of freedom and $A$ is the scale parameter.
 
-The half-cauchy distribution is a special case of the half-t distribution (and therefore the folded-t), where $\nu=1$ in Equation \@ref(eq:half-t). More exactly, it is defined as
+The half-cauchy distribution is a special case of the half-t distribution (and therefore the folded-t), where $\nu=1$ in Equation \@ref(eq:half-t). 
 \begin{gather}
-    p(\tau) = \frac{(\tau)^{-1/2}(1+\tau^2)^{-1}}{\beta(1/2,1/2)}
+    p(\tau) \propto \Bigg(1 + \Big(\frac{\tau}{A}\Big)^2\Bigg)^{-1}
+(\#eq:half-c)
 \end{gather}
-
-where $\beta$ refers to the Beta function. It can allow for wider tails than the half-t, meaning that in the case of random effect models, it allows for larger estimates of the between-study variance [@Sheng-2017].
+It can allow for wider tails than the half-t, meaning that in the case of random effect models, it allows for larger estimates of the between-study variance [@Sheng-2017].
 
 We have presented three weakly informative prior distributions that can realistically constrain the between-study variance, while also maintaining some semblance of mathematical justification in the context of the likelihoods used in Bayesian meta-analysis; this does not, however, shake the sense of the somewhat arbitrary nature of these choices. To this -- abeit regarding only the half-cauchy -- @Polson-2012 say, 
 
